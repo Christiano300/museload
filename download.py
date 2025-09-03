@@ -54,7 +54,7 @@ with sync_playwright() as p:
     )
     limit = len(page_elements)
     header = page.query_selector("#aside-layout span")
-    name = header.inner_text()
+    name = header.inner_text().replace("/", "_").replace("\\", "_")
     scroll_container = page.query_selector("#jmuse-scroller-component")
     scroll_pixels = page.evaluate(
         "container => container.scrollHeight", scroll_container
